@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.movieapp.R
-import com.example.movieapp.model.Movie
+import com.example.movieapp.model.TMDBMovie
 import com.example.movieapp.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 
@@ -24,7 +24,7 @@ class ListFragment : Fragment() {
     private val listAdapter = MovieListAdapter(arrayListOf())
 
     // Observers for LiveData from ViewModel
-    private val movieListDataObserver = Observer<List<Movie>> {list ->
+    private val movieListDataObserver = Observer<List<TMDBMovie>> {list ->
         list?.let {
             movieList.visibility = View.VISIBLE
             listAdapter.updateMovieList(it)
@@ -59,7 +59,7 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Var viewModel handles lifecycle events for fragment
+        // Handles lifecycle events for fragment
         viewModel = ViewModelProviders.of(this).get(ListViewModel::class.java)
 
         // Attach observers & fragment to LiveData variables from ListViewModel

@@ -8,19 +8,23 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.example.movieapp.view.ListFragment"
-        android:label="fragment_list"
+        android:label="Notflix"
         tools:layout="@layout/fragment_list" >
         <action
             android:id="@+id/actionDetail"
             app:destination="@id/detailFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.movieapp.view.DetailFragment"
-        android:label="fragment_detail"
+        android:label="Movie Description"
         tools:layout="@layout/fragment_detail" >
         <action
             android:id="@+id/actionList"
             app:destination="@id/listFragment" />
+        <argument
+            android:name="movie"
+            app:argType="com.example.movieapp.model.TMDBMovie" />
     </fragment>
 </navigation>
